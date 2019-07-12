@@ -111,7 +111,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button6"
+                        android:id="@+id/achievement_page"
                         android:background="@color/Azure"
                         android:text="Leaderboard"
                         android:textSize="12sp"
@@ -138,9 +138,35 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/help_view"
+                            android:id="@+id/lend_a_hand"
                             android:background="@color/Azure"
                             android:text="Lend a hand"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:paddingBottom="10dp"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/Azure"
+                        android:padding="10dp"
+                        >
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:src="@drawable/help"
+                            android:layout_centerInParent="true"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/help_view"
+                            android:background="@color/Azure"
+                            android:text="Request"
                             android:fontFamily="sans-serif-light"
                             android:textSize="12sp"
                             android:gravity="center"

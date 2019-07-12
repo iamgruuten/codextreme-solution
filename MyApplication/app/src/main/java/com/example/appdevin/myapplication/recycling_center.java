@@ -2,6 +2,7 @@ package com.example.appdevin.myapplication;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +40,9 @@ import java.io.InputStream;
 public class recycling_center extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
+    private Button acheievment_page;
+    private Button request_page;
+    private Button request_page_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,33 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
        get_json();
+        acheievment_page = findViewById(R.id.achievement_page);
+        request_page = findViewById(R.id.help_view);
+        request_page_view = findViewById(R.id.lend_a_hand);
 
+        request_page_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent req_view = new Intent(recycling_center.this, show_request.class);
+                startActivity(req_view);
+            }
+        });
+
+        acheievment_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent achm = new Intent(recycling_center.this, leaderboard.class);
+                startActivity(achm);
+            }
+        });
+
+        request_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent req = new Intent(recycling_center.this, request_activity.class);
+                startActivity(req);
+            }
+        });
     }
 
     @Override
