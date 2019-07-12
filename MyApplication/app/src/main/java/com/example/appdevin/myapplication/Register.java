@@ -44,7 +44,6 @@ public class Register extends AppCompatActivity {
         editTextConfirm = findViewById(R.id.txt_confirm);
         editTextContact = findViewById(R.id.txt_number);
 
-
         //Buttons
         register = findViewById(R.id.btnRegister);
 
@@ -56,10 +55,15 @@ public class Register extends AppCompatActivity {
         });
 
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+
         editTextEmail.setText("jeya@gmail.com");
         editTextPassword.setText("12345678");
         editTextConfirm.setText("12345678");
         editTextContact.setText("982344561");
+
+
 
 
 
@@ -73,7 +77,7 @@ public class Register extends AppCompatActivity {
         String confirm = editTextConfirm.getText().toString().trim();
         final String strcontact = editTextContact.getText().toString();
 
-        Log.i(TAG,  String.format("reguset has Email: %s, Password: %s and confirmed Password %s",email,pass,confirm));
+        Log.i(TAG,  String.format("reguser has Email: %s, Password: %s and confirmed Password %s",email,pass,confirm));
 
         if (TextUtils.isEmpty(email)){
             Toast.makeText(Register.this, "Please fill up the empty fields", Toast.LENGTH_SHORT).show();
@@ -105,7 +109,6 @@ public class Register extends AppCompatActivity {
                             Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
                             finish();
-                        } else {
                             Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
 
                         }
