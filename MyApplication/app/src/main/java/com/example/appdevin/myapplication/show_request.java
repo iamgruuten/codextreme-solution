@@ -16,11 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
 public class show_request extends AppCompatActivity {
 //User come to view request
     ImageView back;
     public static DatabaseReference mPostReference;
     RecyclerView recyclerView;
+    List<request_connector> data; //details needed for each card
 
 
     @Override

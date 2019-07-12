@@ -1,4 +1,4 @@
-package com.example.appdevin.myapplication.Class;
+package com.example.appdevin.myapplication;
 
 import android.net.Uri;
 
