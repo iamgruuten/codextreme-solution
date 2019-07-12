@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="app_name">20dp</dimen>
+    <dimen name="header_name">20dp</dimen>
+</resources>
