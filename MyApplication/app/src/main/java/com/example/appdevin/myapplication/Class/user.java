@@ -2,35 +2,32 @@ package com.example.appdevin.myapplication.Class;
 
 public class user {
 
-    public String uid;
-    public String name;
+    public String UID;
+    public String Name;
     public int points;
-    public String contact;
+    public String Contact;
 
-    public user() {
-    }
-
-    public user(String uid, String name, int points, String contact) {
-        this.uid = uid;
-        this.name = name;
+    public user(String UID, String name, int points, String contact) {
+        this.UID = UID;
+        Name = name;
         this.points = points;
-        this.contact = contact;
+        Contact = contact;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUID() {
+        return UID;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public int getPoints() {
@@ -42,10 +39,10 @@ public class user {
     }
 
     public String getContact() {
-        return contact;
+        return Contact;
     }
 
     public void setContact(String contact) {
-        this.contact = contact;
+        Contact = contact;
     }
 }

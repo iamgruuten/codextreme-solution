@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.appdevin.myapplication.Class.user;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -22,13 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
-    private EditText editTextEmail,editTextPassword,editTextConfirm, editTextContact;
+    private EditText editTextEmail,editTextPassword,editTextConfirm;
     private FirebaseAuth mAuth;
     private Button register;
     private String TAG = "Register.class";
-
-    private user mUser;
-    DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +38,6 @@ public class Register extends AppCompatActivity {
         editTextEmail = findViewById(R.id.txt_username);
         editTextPassword = findViewById(R.id.txt_password);
         editTextConfirm = findViewById(R.id.txt_confirm);
-        editTextContact = findViewById(R.id.txt_number);
-
 
         //Buttons
         register = findViewById(R.id.btnRegister);
@@ -56,10 +50,10 @@ public class Register extends AppCompatActivity {
         });
 
 
-        editTextEmail.setText("jeya@gmail.com");
-        editTextPassword.setText("12345678");
-        editTextConfirm.setText("12345678");
-        editTextContact.setText("982344561");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+
+
 
 
 
@@ -71,9 +65,8 @@ public class Register extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String pass = editTextPassword.getText().toString().trim();
         String confirm = editTextConfirm.getText().toString().trim();
-        final String strcontact = editTextContact.getText().toString();
 
-        Log.i(TAG,  String.format("reguset has Email: %s, Password: %s and confirmed Password %s",email,pass,confirm));
+        Log.i(TAG,  String.format("reguser has Email: %s, Password: %s and confirmed Password %s",email,pass,confirm));
 
         if (TextUtils.isEmpty(email)){
             Toast.makeText(Register.this, "Please fill up the empty fields", Toast.LENGTH_SHORT).show();
@@ -98,13 +91,9 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "onComplete: You have registered successfully");
-                            mUser = new user(mAuth.getCurrentUser().getUid(),"John",0,strcontact);
-
-                            mDatabaseReference.child(mUser.getUid()).setValue(mUser);
-
-                            Intent intent = new Intent(Register.this, Login.class);
-                            startActivity(intent);
-                            finish();
+//                            Intent intent = new Intent(Register.this, MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
                         } else {
                             Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
 
