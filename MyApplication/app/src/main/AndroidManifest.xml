@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".request_activity"></activity>
+        <activity android:name=".show_request"></activity>
+        <activity android:name=".request_activity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,11 +46,11 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".leaderboard" />
-        <activity android:name=".recycling_center"></activity>
+        <activity android:name=".recycling_center" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".activity_pop"></activity>
+        <activity android:name=".activity_pop" />
 
         <provider
             android:name=".Class.GenericFileProvider"

@@ -34,6 +34,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
     private GoogleMap mMap;
     private Button acheievment_page;
     private Button request_page;
+    private Button request_page_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,15 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
 
         acheievment_page = findViewById(R.id.achievement_page);
         request_page = findViewById(R.id.help_view);
+        request_page_view = findViewById(R.id.lend_a_hand);
+
+        request_page_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent req_view = new Intent(recycling_center.this, show_request.class);
+                startActivity(req_view);
+            }
+        });
 
         acheievment_page.setOnClickListener(new View.OnClickListener() {
             @Override

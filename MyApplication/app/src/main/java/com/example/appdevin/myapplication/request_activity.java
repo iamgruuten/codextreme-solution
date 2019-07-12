@@ -1,12 +1,15 @@
 package com.example.appdevin.myapplication;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -38,7 +41,7 @@ import java.util.Locale;
 
 public class request_activity extends AppCompatActivity {
 
-
+//Request for help
     private static final int REQUEST_CAMERA = 3;
     private static final int SELECT_FILE = 2;
     public static final int CAPTURE_IMAGE_FULLSIZE_ACTIVITY_REQUEST_CODE = 1777;
@@ -75,7 +78,7 @@ public class request_activity extends AppCompatActivity {
         ps = new ParticleSystem(this ,100, R.drawable.star_white_border, 800);
         ps.setScaleRange(0.9f, 1.3f);
         ps.setSpeedRange(0.1f, 0.25f);
-        ps.setAcceleration(0.00001f, 90);
+        ps.setAcceleration(0.0001f, 90);
         ps.setRotationSpeedRange(90, 180);
         ps.setFadeOut(400, new AccelerateInterpolator());
 
@@ -85,9 +88,9 @@ public class request_activity extends AppCompatActivity {
                 sPostalcode = postalcode.getText().toString();
                 sDescription = description.getText().toString();
 
-                
+
                 achievements();
-                ps.oneShot(v, 100);
+                ps.oneShot(v, 200);
             }
         });
 
@@ -246,8 +249,13 @@ public class request_activity extends AppCompatActivity {
     }
 
     private void achievements(){
-        Intent i = new Intent(getApplicationContext(), activity_pop.class);
-        startActivity(i);
 
+        // custom dialog
+        Dialog dialog;
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.pop_thanks);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

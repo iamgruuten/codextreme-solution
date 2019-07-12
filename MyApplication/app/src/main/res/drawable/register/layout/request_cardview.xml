@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#008E8D"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:id="@+id/DesCardView"
+        android:clickable="true"
+        app:cardBackgroundColor="#FDD8D3"
+        app:cardCornerRadius="4dp"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/picture_recycle"
+                android:layout_width="120dp"
+                android:layout_height="90dp"
+                android:padding="4dp"
+                android:contentDescription="dp"
+                />
+
+            <TextView
+                android:id="@+id/leaderboard_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/picture_recycle"
+                android:layout_toEndOf="@id/picture_recycle"
+                android:text="[Name of the person]"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#1A6D8F" />
+
+            <TextView
+                android:id="@+id/description_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leaderboard_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#1A6D8F"
+                android:layout_toRightOf="@id/picture_recycle"
+                android:layout_toEndOf="@id/picture_recycle"
+                android:text="Description"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        </RelativeLayout>
+            <ImageView
+                android:id="@+id/call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="40dp"
+                android:visibility="visible"
+                android:layout_gravity="end"
+                android:contentDescription="Caller of the person"
+                android:src="@drawable/call"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
