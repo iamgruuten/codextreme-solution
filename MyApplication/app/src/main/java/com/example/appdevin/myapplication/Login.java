@@ -17,14 +17,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
     private Button loginbtn,create;
-    private EditText nme, pass, contact;
-    private String nmee , passw, strcontact;
+    private EditText nme, pass;
+    private String nmee , passw;
     private CheckBox rmbMe;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private user mUser;
@@ -38,7 +41,7 @@ public class Login extends AppCompatActivity {
         loginbtn = findViewById(R.id.loginbtn);
         nme = findViewById(R.id.txt_username);
         pass = findViewById(R.id.txt_password);
-        contact = findViewById(R.id.txt_number);
+
 
         create = findViewById(R.id.btnCreate);
 
@@ -48,16 +51,26 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 nmee = nme.getText().toString();
                 passw = pass.getText().toString();
-                strcontact = contact.getText().toString();
 
                 mAuth.signInWithEmailAndPassword(nmee,passw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            mUser = new user(mAuth.getCurrentUser().getUid(),"John",0,strcontact);
+                            ValueEventListener valueEventListener = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            //Set data
-                            mDatabaseReference.setValue(mUser);
+                                    user User = dataSnapshot.getValue(user.class);
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            };
+
+                            mDatabaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
 
                             Intent intent = new Intent(Login.this, recycling_center.class);
                             startActivity(intent);
@@ -87,7 +100,7 @@ public class Login extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),recycling_center.class));
+                startActivity(new Intent(getApplicationContext(),Register.class));
                 finish();
             }
         });
