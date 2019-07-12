@@ -1,6 +1,7 @@
 package com.example.appdevin.myapplication;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.maps.MapFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class recycling_center extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
@@ -41,6 +49,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         //To set the orientation to portrait
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+       get_json();
 
     }
 
@@ -73,4 +82,27 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
     }
+
+  public void get_json(){
+        String json;
+
+      try {
+          InputStream is = getAssets().open("cashfortrash.json");
+          int size = is.available();
+          byte [] buffer = new byte [size];
+          is.read();
+          is.close();
+
+          json = new String(buffer, "UTF-8");
+          JSONArray jsonArray = new JSONArray(json);
+
+          Log.i("TAGGGGGG", "get_json: "+jsonArray.length());
+      } catch (IOException e) {
+          Log.e("TAGGGG", "get_json_IO ERROR: "+e.getLocalizedMessage() );
+          e.printStackTrace();
+      }catch (JSONException e){
+          Log.e("TAGGGG", "get_json JSON ERROR: "+e.getLocalizedMessage() );
+          e.printStackTrace();
+      }
+  }
 }
