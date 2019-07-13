@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
     private Button acheievment_page;
     private Button request_page;
     private Button request_page_view;
+    private TextView points;
 
     ArrayList<recycleCenterData> list;
 
@@ -55,6 +57,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_recycling_center);
 
         //Obtain user points
+        points = findViewById(R.id.score_board);
+        points.setText(Login.User.getPoints());
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
