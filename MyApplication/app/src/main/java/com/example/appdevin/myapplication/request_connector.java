@@ -6,24 +6,48 @@ public class request_connector {
 
     public String name;
     public String postalcode;
-    public int phone_number;
-    Uri image_of_recycled_items;
+    public String phone_number;
+    public String imageKey;
+
+    public request_connector() {
+    }
+
+    public request_connector(String name, String postalcode, String phone_number, String imageKey) {
+        this.name = name;
+        this.postalcode = postalcode;
+        this.phone_number = phone_number;
+        this.imageKey = imageKey;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPostalcode() {
         return postalcode;
     }
 
-    public int getPhone_number() {
+    public void setPostalcode(String postalcode) {
+        this.postalcode = postalcode;
+    }
+
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public Uri getImage_of_recycled_items() {
-        return image_of_recycled_items;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
+    public String getImageKey() {
+        return imageKey;
+    }
 
+    public void setImageKey(String imageKey) {
+        this.imageKey = imageKey;
+    }
 }

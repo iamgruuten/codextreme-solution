@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
     private CheckBox rmbMe;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private user mUser;
+    public static user User;
     DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
     @Override
@@ -60,7 +61,7 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                    user User = dataSnapshot.getValue(user.class);
+                                  User = dataSnapshot.getValue(user.class);
 
                                 }
 
