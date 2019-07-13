@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -47,6 +48,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class request_activity extends AppCompatActivity {
 
@@ -87,11 +89,11 @@ public class request_activity extends AppCompatActivity {
 
         // Launch 2 particle systems one for each image
         ps = new ParticleSystem(this ,100, R.drawable.star_white_border, 800);
-        ps.setScaleRange(0.9f, 1.3f);
-        ps.setSpeedRange(0.1f, 0.25f);
-        ps.setAcceleration(0.0001f, 90);
+        ps.setScaleRange(0.9f, 2.3f);
+        ps.setSpeedRange(0.01f, 0.15f);
+        ps.setAcceleration(0.00001f, 120);
         ps.setRotationSpeedRange(90, 180);
-        ps.setFadeOut(400, new AccelerateInterpolator());
+        ps.setFadeOut(900, new AccelerateInterpolator());
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,9 +128,24 @@ public class request_activity extends AppCompatActivity {
 
                 Dref.child(Dref.push().getKey()).setValue(request_connector);
 
-
                 achievements();
-                ps.oneShot(v, 200);
+                ps.oneShot(v, 230);
+
+
+
+
+
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       onBackPressed();
+
+                    }
+                }, 1500);
+
+
             }
         });
 
@@ -295,5 +312,9 @@ public class request_activity extends AppCompatActivity {
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+
+
+
+
     }
 }
