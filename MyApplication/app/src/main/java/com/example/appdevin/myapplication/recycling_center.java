@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.appdevin.myapplication.Class.Reward;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,6 +48,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
     private Button acheievment_page;
     private Button request_page;
     private Button request_page_view;
+    private TextView points;
+    ImageView qr, redeem;
 
     ArrayList<recycleCenterData> list;
 
@@ -55,7 +60,28 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_recycling_center);
 
         //Obtain user points
-        
+        points = findViewById(R.id.score_board);
+        points.setText(Login.User.getPoints());
+
+        //qr
+        qr = findViewById(R.id.qr_code);
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(recycling_center.this, BarcodeCaptureActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //redeem
+        redeem = findViewById(R.id.trophy);
+        redeem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(recycling_center.this, Reward.class);
+                startActivity(intent);
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

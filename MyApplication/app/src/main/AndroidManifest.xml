@@ -23,7 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Class.Reward"></activity>
+        <activity android:name=".Class.Reward" />
         <activity android:name=".show_request" />
         <activity android:name=".request_activity" />
         <!--
