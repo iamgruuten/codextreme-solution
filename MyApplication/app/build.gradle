@@ -19,9 +19,10 @@ android {
                     'src/main/res/drawable',
                     'src/main/res'
             ]
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
         }
+        debug { assets.srcDirs = ['src/debug/assets', 'src/main/assert'] }
     }
-
 
     buildTypes {
         release {

@@ -1,6 +1,7 @@
 package com.example.appdevin.myapplication;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
@@ -30,12 +31,23 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.maps.MapFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class recycling_center extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     private Button acheievment_page;
     private Button request_page;
     private Button request_page_view;
+
+    ArrayList<recycleCenterData> list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,10 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
 
         //To set the orientation to portrait
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        recycleCenterData recycleCenterData = new recycleCenterData();
+       list = recycleCenterData.list();
+
 
         acheievment_page = findViewById(R.id.achievement_page);
         request_page = findViewById(R.id.help_view);
@@ -89,7 +105,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         mMap.setBuildingsEnabled(false);
 
         MyLocationIndicate();
-        marker(1.41527, 103.798);
+
+
 
     }
 
@@ -102,6 +119,9 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
                 == PackageManager.PERMISSION_GRANTED) {
             //This a Api calling to activate the blue dot
             mMap.setMyLocationEnabled(true);
+            for (recycleCenterData rc:list) {
+                marker(rc.getLat(), rc.getLng());
+            }
         } else {
             // Show rationale and request permission.
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
@@ -110,7 +130,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
 
     /*-----------------------------Add marker----------------------------*/
     private void marker(Double lat, Double lon){
-        LatLng latLng = new LatLng(lat, lon);
+        LatLng latLng = new LatLng(lon, lat);
         mMap.addMarker(new MarkerOptions().position(latLng).title("Recycling Center")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
