@@ -44,9 +44,9 @@
     <ImageView
         android:id="@+id/image_recycle"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/camera"/>
+        android:background="@drawable/camera"/>
     </FrameLayout>
 
     <TextView
