@@ -46,6 +46,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
     private Button request_page;
     private Button request_page_view;
 
+    ArrayList<recycleCenterData> list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         //To set the orientation to portrait
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        recycleCenterData recycleCenterData = new recycleCenterData();
+       list = recycleCenterData.list();
 
 
         acheievment_page = findViewById(R.id.achievement_page);
@@ -100,7 +104,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         mMap.setBuildingsEnabled(false);
 
         MyLocationIndicate();
-        marker(103.945521390895, 1.3467161569618);
+
+
 
     }
 
@@ -113,6 +118,9 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
                 == PackageManager.PERMISSION_GRANTED) {
             //This a Api calling to activate the blue dot
             mMap.setMyLocationEnabled(true);
+            for (recycleCenterData rc:list) {
+                marker(rc.getLat(), rc.getLng());
+            }
         } else {
             // Show rationale and request permission.
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
@@ -121,7 +129,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
 
     /*-----------------------------Add marker----------------------------*/
     private void marker(Double lat, Double lon){
-        LatLng latLng = new LatLng(lat, lon);
+        LatLng latLng = new LatLng(lon, lat);
         mMap.addMarker(new MarkerOptions().position(latLng).title("Recycling Center")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).setTag("Recycle");
     }

@@ -1,3 +1,5 @@
+package com.example.appdevin.myapplication;
+
 import java.util.ArrayList;
 
 public class recycleCenterData {
@@ -135,6 +137,6 @@ public class recycleCenterData {
         recycleCenterData.add(new recycleCenterData(103.952704902103, 1.36300828434478));
         recycleCenterData.add(new recycleCenterData(103.945701732101, 1.35639770646062));
 
-        return recycleCenterData
+        return recycleCenterData;
     }
 }
