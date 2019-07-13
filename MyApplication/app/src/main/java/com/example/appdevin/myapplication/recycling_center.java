@@ -53,6 +53,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
 
     ArrayList<recycleCenterData> list;
 
+    private String TAG = "Recycling ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +62,9 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_recycling_center);
 
         //Obtain user points
-        points = findViewById(R.id.score_board);
-        points.setText(Login.User.getPoints());
+        points = (TextView) findViewById(R.id.score_board);
+        Log.i(TAG, "onCreate: "+Login.User.getPoints());
+        points.setText(String.valueOf(Login.User.getPoints()));
 
         //qr
         qr = findViewById(R.id.qr_code);
