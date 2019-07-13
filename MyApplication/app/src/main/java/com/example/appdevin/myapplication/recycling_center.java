@@ -24,6 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -80,13 +81,14 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         mMap = googleMap;
         Toast.makeText(this, "Map ready", Toast.LENGTH_SHORT).show();
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setRotateGesturesEnabled(true);
+        mMap.setBuildingsEnabled(false);
+
         MyLocationIndicate();
+        marker(103.945521390895, 1.3467161569618);
 
     }
 
@@ -104,4 +106,12 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
     }
+
+    /*-----------------------------Add marker----------------------------*/
+    private void marker(Double lat, Double lon){
+        LatLng latLng = new LatLng(lat, lon);
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Recycling Center")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).setTag("Recycle");
+    }
+
 }
