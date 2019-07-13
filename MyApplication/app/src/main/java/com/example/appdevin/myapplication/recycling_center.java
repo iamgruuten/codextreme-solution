@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class recycling_center extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -43,6 +44,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
     private Button acheievment_page;
     private Button request_page;
     private Button request_page_view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         //To set the orientation to portrait
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-       get_json();
+
+
         acheievment_page = findViewById(R.id.achievement_page);
         request_page = findViewById(R.id.help_view);
         request_page_view = findViewById(R.id.lend_a_hand);
@@ -114,26 +117,5 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
         }
     }
 
-  public void get_json(){
-        String json;
 
-      try {
-          InputStream is = getAssets().open("cashfortrash.json");
-          int size = is.available();
-          byte [] buffer = new byte [size];
-          is.read();
-          is.close();
-
-          json = new String(buffer, "UTF-8");
-          JSONArray jsonArray = new JSONArray(json);
-
-          Log.i("TAGGGGGG", "get_json: "+jsonArray.length());
-      } catch (IOException e) {
-          Log.e("TAGGGG", "get_json_IO ERROR: "+e.getLocalizedMessage() );
-          e.printStackTrace();
-      }catch (JSONException e){
-          Log.e("TAGGGG", "get_json JSON ERROR: "+e.getLocalizedMessage() );
-          e.printStackTrace();
-      }
-  }
 }
