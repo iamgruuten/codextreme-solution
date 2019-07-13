@@ -54,6 +54,7 @@
                 android:layout_toRightOf="@id/picture_recycle"
                 android:layout_toEndOf="@id/picture_recycle"
                 android:text="Description"
+                android:maxLines="10"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         </RelativeLayout>

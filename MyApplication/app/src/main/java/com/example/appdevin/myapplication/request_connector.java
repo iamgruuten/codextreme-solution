@@ -8,15 +8,17 @@ public class request_connector {
     public String postalcode;
     public String phone_number;
     public String imageKey;
+    public String description;
 
     public request_connector() {
     }
 
-    public request_connector(String name, String postalcode, String phone_number, String imageKey) {
+    public request_connector(String name, String postalcode, String phone_number, String imageKey, String description) {
         this.name = name;
         this.postalcode = postalcode;
         this.phone_number = phone_number;
         this.imageKey = imageKey;
+        this.description = description;
     }
 
     public String getName() {
@@ -49,5 +51,13 @@ public class request_connector {
 
     public void setImageKey(String imageKey) {
         this.imageKey = imageKey;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

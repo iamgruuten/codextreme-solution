@@ -113,7 +113,7 @@ public class request_activity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Log.d("Uploaded","true");
 
-                        request_connector request_connector = new request_connector(Login.User.name,sPostalcode,Login.User.contact,Key);
+                        request_connector request_connector = new request_connector(Login.User.name,sPostalcode,Login.User.contact,Key,sDescription);
 
                         Dref.child(Dref.push().getKey()).setValue(request_connector);
                     }
@@ -124,9 +124,6 @@ public class request_activity extends AppCompatActivity {
                     }
                 });
 
-                request_connector request_connector = new request_connector(Login.User.name,sPostalcode,Login.User.contact,"nhxlk");
-
-                Dref.child(Dref.push().getKey()).setValue(request_connector);
 
                 achievements();
                 ps.oneShot(v, 230);
