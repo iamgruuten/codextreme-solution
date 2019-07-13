@@ -74,6 +74,8 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
                 Intent intent = new Intent(recycling_center.this, BarcodeCaptureActivity.class);
                 startActivity(intent);
                 Toast.makeText(recycling_center.this, "Redeem score", Toast.LENGTH_SHORT).show();
+                points.setText(String.valueOf(Login.User.getPoints()));
+
             }
         });
 

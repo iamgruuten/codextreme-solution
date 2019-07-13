@@ -145,5 +145,8 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="ShinyGold">#ffd700</color>
+    <color name="Sliver">#c0c0c0</color>
+    <color name="Bronze">#cd7f32</color>
 </resources>
 

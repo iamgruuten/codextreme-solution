@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "onComplete: You have registered successfully");
-                            mUser = new user(mAuth.getCurrentUser().getUid(),"John",0,strcontact);
+                            mUser = new user(mAuth.getCurrentUser().getUid(),editTextUsername.getText().toString().trim(),0,strcontact);
 
                             mDatabaseReference.child(mUser.getUid()).setValue(mUser);
 

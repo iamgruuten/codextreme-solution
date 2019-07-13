@@ -39,6 +39,7 @@
                 android:layout_toRightOf="@id/imageView"
                 android:layout_toEndOf="@id/imageView"
                 android:text="[Name of the person]"
+                android:textSize="18dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#1A6D8F" />
 
@@ -53,6 +54,7 @@
                 android:textColor="#1A6D8F"
                 android:layout_toRightOf="@id/imageView"
                 android:layout_toEndOf="@id/imageView"
+                android:textSize="18dp"
                 android:text="Contribution Score: "
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
