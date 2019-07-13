@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
-    private EditText editTextEmail,editTextPassword,editTextConfirm, editTextContact;
+    private EditText editTextEmail,editTextPassword,editTextConfirm, editTextContact, editTextUsername;
     private FirebaseAuth mAuth;
     private Button register;
     private String TAG = "Register.class";
@@ -39,6 +39,7 @@ public class Register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //Edittext
+        editTextUsername = findViewById(R.id.txt_user);
         editTextEmail = findViewById(R.id.txt_username);
         editTextPassword = findViewById(R.id.txt_password);
         editTextConfirm = findViewById(R.id.txt_confirm);
