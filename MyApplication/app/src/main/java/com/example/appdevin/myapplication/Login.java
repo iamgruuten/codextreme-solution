@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -61,7 +62,10 @@ public class Login extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                   User = dataSnapshot.getValue(user.class);
+                                  Log.i("LoginPage", "onDataChange: "+User.getPoints());
 
+                                    Intent intent = new Intent(Login.this, recycling_center.class);
+                                    startActivity(intent);
                                 }
 
                                 @Override
@@ -72,8 +76,6 @@ public class Login extends AppCompatActivity {
 
                             mDatabaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
 
-                            Intent intent = new Intent(Login.this, recycling_center.class);
-                            startActivity(intent);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
