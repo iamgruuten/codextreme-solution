@@ -70,11 +70,14 @@ public final class BarcodeCaptureActivity extends AppCompatActivity
 
     @Override
     public void onDetectedQrCode(Barcode barcode) {
-        if (barcode != null) {
+        if (barcode.rawValue != null) {
             Intent intent = new Intent();
             intent.putExtra(BarcodeObject, barcode.rawValue);
             setResult(CommonStatusCodes.SUCCESS, intent);
             finish();
+        }
+        else{
+
         }
     }
 

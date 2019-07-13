@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
     private String nmee , passw;
     private CheckBox rmbMe;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private user mUser;
     public static user User;
     DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("users");
 
