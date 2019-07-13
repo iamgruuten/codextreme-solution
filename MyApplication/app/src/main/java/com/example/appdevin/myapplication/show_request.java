@@ -51,7 +51,6 @@ public class show_request extends AppCompatActivity {
 
         
 
-
         // Create adapter passing in the sample user data
          QuestsAdapter adapter = new QuestsAdapter(contacts);
         // Attach the adapter to the recyclerview to populate items
