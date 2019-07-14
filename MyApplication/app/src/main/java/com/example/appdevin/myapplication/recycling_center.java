@@ -86,6 +86,7 @@ public class recycling_center extends AppCompatActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(recycling_center.this, Reward.class);
                 startActivity(intent);
+                points.setText(String.valueOf(Login.User.getPoints()));
             }
         });
 

@@ -20,6 +20,7 @@ public class Reward extends AppCompatActivity {
     ImageView back;
     TextView score;
     ArrayList<Integer> list = new ArrayList<>();
+    int flame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class Reward extends AppCompatActivity {
         bt = findViewById(R.id.bbt);
         mc = findViewById(R.id.mc);
         kfc = findViewById(R.id.kfc);
+        flame = Login.User.getPoints();
 
         score.setText(String.valueOf(Login.User.getPoints()));
         back.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +52,8 @@ public class Reward extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 points = list.get(Integer.parseInt(v.getContentDescription().toString()));
-                updatescore(points);
+                flame -= points;
+                updatescore(flame);
             }
         });
 
@@ -58,7 +61,8 @@ public class Reward extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 points = list.get(Integer.parseInt(v.getContentDescription().toString()));
-                updatescore(points);
+                flame -= points;
+                updatescore(flame);
 
 
             }
@@ -68,7 +72,8 @@ public class Reward extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 points = list.get(Integer.parseInt(v.getContentDescription().toString()));
-                updatescore(points);
+                flame -= points;
+                updatescore(flame);
 
 
             }
@@ -78,8 +83,8 @@ public class Reward extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 points = list.get(Integer.parseInt(v.getContentDescription().toString()));
-                updatescore(points);
-
+                flame -= points;
+                updatescore(flame);
             }
         });
 
@@ -90,5 +95,6 @@ public class Reward extends AppCompatActivity {
     }
     public void updatescore(int score){
         Login.User.setPoints(score);
+        onBackPressed();
     }
 }
